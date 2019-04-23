@@ -241,33 +241,33 @@ firewall-cmd --add-rich-rule='rule family="ipv4" source ipset="zabbix_server" se
 
 -----------------------------------
 
-sshd:123.57.248.15:allow
-sshd:121.22.28.50:allow
-sshd:all:den
+	sshd:123.57.248.15:allow
+	sshd:121.22.28.50:allow
+	sshd:all:den
 
-*filter
-:INPUT DROP
-:FORWARD ACCEPT
-:OUTPUT ACCEPT
+	*filter
+	:INPUT DROP
+	:FORWARD ACCEPT
+	:OUTPUT ACCEPT
 
--A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
--A INPUT -i lo -j ACCEPT
--A INPUT -p icmp -j ACCEPT
+	-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+	-A INPUT -i lo -j ACCEPT
+	-A INPUT -p icmp -j ACCEPT
 
--A INPUT -p tcp -m tcp --dport 80:85 -j ACCEPT
--A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
--A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
--A INPUT -s 10.0.0.0/24 -p tcp -m tcp --dport 3306 -j ACCEPT
--A INPUT -s 10.0.0.0/24 -p tcp -m tcp --dport 9000 -j ACCEPT
+	-A INPUT -p tcp -m tcp --dport 80:85 -j ACCEPT
+	-A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+	-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+	-A INPUT -s 10.0.0.0/24 -p tcp -m tcp --dport 3306 -j ACCEPT
+	-A INPUT -s 10.0.0.0/24 -p tcp -m tcp --dport 9000 -j ACCEPT
 
--A INPUT -s 123.56.92.88  -p tcp -m tcp --dport 1311 -j ACCEPT
--A INPUT -s 121.22.8.82 -p tcp -m tcp --dport 1311 -j ACCEPT
--A INPUT -s 10.0.0.106 -p tcp -m tcp --dport 10050 -j ACCEPT
--A INPUT -s 202.63.165.106 -p tcp -m tcp --dport 10050 -j ACCEPT
--A INPUT -s 123.57.156.2 -p tcp -m tcp --dport 22 -j ACCEPT
--A INPUT -s 123.56.92.88 -p tcp -m tcp --dport 22 -j ACCEPT
--A INPUT -s 123.57.248.15 -p tcp -m tcp --dport 22 -j ACCEPT
--A INPUT -s 121.22.28.50 -p tcp -m tcp --dport 22 -j ACCEPT
--A INPUT -s 123.59.50.68 -p udp --dport 161 -j ACCEPT
--A INPUT -s 103.218.243.80 -p udp --dport 161 -j ACCEPT
-COMMIT
+	-A INPUT -s 123.56.92.88  -p tcp -m tcp --dport 1311 -j ACCEPT
+	-A INPUT -s 121.22.8.82 -p tcp -m tcp --dport 1311 -j ACCEPT
+	-A INPUT -s 10.0.0.106 -p tcp -m tcp --dport 10050 -j ACCEPT
+	-A INPUT -s 202.63.165.106 -p tcp -m tcp --dport 10050 -j ACCEPT
+	-A INPUT -s 123.57.156.2 -p tcp -m tcp --dport 22 -j ACCEPT
+	-A INPUT -s 123.56.92.88 -p tcp -m tcp --dport 22 -j ACCEPT
+	-A INPUT -s 123.57.248.15 -p tcp -m tcp --dport 22 -j ACCEPT
+	-A INPUT -s 121.22.28.50 -p tcp -m tcp --dport 22 -j ACCEPT
+	-A INPUT -s 123.59.50.68 -p udp --dport 161 -j ACCEPT
+	-A INPUT -s 103.218.243.80 -p udp --dport 161 -j ACCEPT
+	COMMIT
