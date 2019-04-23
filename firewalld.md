@@ -176,20 +176,18 @@ firewall-cmd --permanent --zone=public --add-rich-rule='rule family=ipv4 source 
 ## rich rule
 
 Example 1
+
        Enable new IPv4 and IPv6 connections for protocol 'ah'
+       rule protocol value="ah" accept
+Example 2
 
-           rule protocol value="ah" accept
-
-   Example 2
        Allow new IPv4 and IPv6 connections for service ftp and log 1 per minute using audit
+       rule service name="ftp" log limit value="1/m" audit accept
+Example 3
 
-           rule service name="ftp" log limit value="1/m" audit accept
-
-   Example 3
        Allow new IPv4 connections from address 192.168.0.0/24 for service tftp and log 1 per minutes using syslog
-
-                                         rule family="ipv4" source address="192.168.0.0/24" service name="tftp" log prefix="tftp" level="info" limit value="1/m" accept
-					 firewall-cmd --add-rich-rule='rule family="ipv4" source ipset="zabbix_server" service name="tftp" log prefix="tftp" level="info" accept'
+       rule family="ipv4" source address="192.168.0.0/24" service name="tftp" log prefix="tftp" level="info" limit value="1/m" accept
+       firewall-cmd --add-rich-rule='rule family="ipv4" source ipset="zabbix_server" service name="tftp" log prefix="tftp" level="info" accept'
 
 ------------------------------
 
