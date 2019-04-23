@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<zone target="DROP">
+  <short>Drop</short>
+  <description>Unsolicited incoming network packets are dropped. Incoming packets that are related to outgoing network connections are accepted. Outgoing network connections are allowed.</description>
+  <service name="http"/>
+  <service name="https"/>
+  <rule family="ipv4">
+    <source ipset="white_addr"/>
+    <service name="ssh"/>
+    <log level="warning"/>
+    <accept/>
+  </rule>
+  <rule family="ipv4">
+    <source ipset="pravite_addr"/>
+    <service name="php-fpm"/>
+    <log level="warning"/>
+    <accept/>
+  </rule>
+  <rule family="ipv4">
+    <source ipset="zabbix_server"/>
+    <service name="zabbix-agent"/>
+    <log level="warning"/>
+    <accept/>
+  </rule>
+  <rule family="ipv4">
+    <source ipset="white_addr"/>
+    <service name="DellOpenManage"/>
+    <log level="warning"/>
+    <accept/>
+  </rule>
+  <rule family="ipv4">
+    <source ipset="pravite_addr"/>
+    <service name="dhcp"/>
+    <log level="warning"/>
+    <accept/>
+  </rule>
+  <rule>
+    <protocol value="icmp"/>
+    <log level="warning"/>
+    <accept/>
+  </rule>
+  <rule family="ipv4">
+    <source ipset="pravite_addr"/>
+    <service name="mysql"/>
+    <log level="warning"/>
+    <accept/>
+  </rule>
+  <rule family="ipv4">
+    <source ipset="pravite_addr"/>
+    <service name="ssh"/>
+    <log level="warning"/>
+    <accept/>
+  </rule>
+</zone>
